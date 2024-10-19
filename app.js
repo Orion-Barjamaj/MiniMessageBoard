@@ -50,4 +50,4 @@ app.get('/', (req,res) => {
 app.use('/new', newPage);
 app.use('/messages', openMessage);
 
-app.listen(8888, () => console.log("Worked"))
+app.listen(8888, () => console.log("Connected"))

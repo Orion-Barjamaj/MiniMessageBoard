@@ -7,7 +7,6 @@ module.exports = function(messages) {
         const messageId = parseInt(req.params.id, 10);
     
         const message = messages.find(msg => msg.id === messageId);
-        console.log(message);
     
         if(message){
             res.render('message', {message: message})

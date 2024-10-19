@@ -24,7 +24,6 @@ module.exports = function(messages){
     router.post('/', (req, res) => {
         messages.unshift({ text: req.body.text, user: req.body.user, added: addDate(), id: messages.length});
         res.redirect('/');
-        console.log('This is the messages array: ', messages);
     })
 
     return router;
