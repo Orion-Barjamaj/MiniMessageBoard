@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require("node:path");
+const port = process.env.PORT || 3000
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -50,4 +51,4 @@ app.get('/', (req,res) => {
 app.use('/new', newPage);
 app.use('/messages', openMessage);
 
-app.listen(8888, () => console.log("Connected"))
+app.listen(port, () => console.log("Connected"))
