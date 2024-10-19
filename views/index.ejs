@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>        
+        <%- include('navbar') %>
+        <div class="description">Welcome to my mini message board!<br> <span>Share your thoughts or leave a quick note.</span></div>
+        <div class="messagesContainer">
+            <% messages.map((message) => { %>
+                <a href="/messages/<%= message.id %>">
+                    <div class="messageBody">
+                        <div class="messageText"><%= message.text %></div>
+                        <div class="infoContainer">
+                            <div>By <%= message.user %>,</div>
+                            <div>on <%= message.added %></div>
+                        </div>
+                    </div>
+                </a>
+            <% }) %>
+        </div>
+    </body>
+</html>

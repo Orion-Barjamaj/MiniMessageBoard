@@ -1,0 +1,38 @@
+<% var count = 5; %>
+
+<html>
+    <head>
+        <title>Add Message</title>
+        <link rel="stylesheet" href="/style.css">
+        <script>
+            function updateCount(){
+                const input = document.getElementById("textArea");
+                const countDisplay = document.getElementById("count");
+                countDisplay.textContent = input.value.length;
+                if(Number(countDisplay.textContent) < 5){
+                    countDisplay.style.color = "red";
+                }else {
+                    countDisplay.style.color = "#373A40";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <%- include('navbar') %>
+        <form method="POST" action="/new" class="form">
+            <div class="inputHolder">
+                <label>Enter Name: </label>
+                <input name="user" placeholder="e.g John" class="nameInput input" minlength="3" required>
+            </div>
+            <div class="inputHolder">
+                <div class="counter">
+                    <label>Enter Message: </label>
+                    <div id="count">0</div>
+                </div>
+                <textarea id="textArea" name="text" placeholder="e.g I just coded this website" class="messageInput input" oninput="updateCount()" minlength="
+                5" required></textarea>
+            </div>
+            <button type="submit" class="addMessage">Send</button>
+        </form>
+    </body>
+</html>
