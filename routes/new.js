@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const queries = require("../db/queries");
 
 function addDate(){
     const date = new Date();
@@ -21,8 +22,8 @@ module.exports = function(messages){
         res.render('new');
     })
     
-    router.post('/', (req, res) => {
-        messages.unshift({ text: req.body.text, user: req.body.user, added: addDate(), id: messages.length});
+    router.post('/', async (req, res) => {
+        await queries.insertMessage(req.body.user, req.body.text, addDate());
         res.redirect('/');
     })
 

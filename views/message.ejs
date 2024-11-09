@@ -1,16 +1,19 @@
 <html>
     <head>
-        <title>Message <%= message.id %></title>
+        <title>Message <%= pageid %></title>
         <link rel="stylesheet" href="/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <%- include('navbar') %>
         <div class="messageHandle">
-            <div class="infoHandle">
-                <div class="messageName"><%= message.user %></div>
-                <div>Posted on: <%= message.added %></div>
-            </div>
-            <div class="textHandle"><%= message.text %></div>
+            <% message.map((msg) => { %>
+                <div class="textHandle"><%= msg.message %></div>
+                <div class="infoHandle">
+                    <div class="messageName">By: <%= msg.username %></div>
+                    <div>Posted on: <%= msg.datetime %></div>
+                </div>
+            <% }) %>
         </div>
     </body>
 </html>

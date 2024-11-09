@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const path = require("node:path");
+const query = require("../db/queries.js");
 
 module.exports = function(messages) {
-    router.get('/:id', (req, res) => {
+    router.get('/:id', async (req, res) => {
         const messageId = parseInt(req.params.id, 10);
     
-        const message = messages.find(msg => msg.id === messageId);
+        const message = await query.getMessageById(messageId);
     
         if(message){
-            res.render('message', {message: message})
+            console.log('Selected Message: ', message);
+            res.render('message', {message: message, pageid: messageId})
         }else {
             res.status(404).send('not found');
         }
